@@ -26,7 +26,7 @@ module.exports = {
             db.query(`INSERT INTO carros (modelo, placa) VALUES (?, ?)`, [modelo, placa],
             (error, result) => {
                 if (error) {reject(error); return}
-                resolve(result.insertCodigo)
+                resolve(result.insertId)
             })
         })
     },
@@ -41,7 +41,7 @@ module.exports = {
         })
     },
 
-    excluirCarro: (codigo) => {
+    deletarCarro: (codigo) => {
         return new Promise((resolve, reject) => {
             db.query('DELETE FROM carros WHERE codigo = ?', [codigo], (error, result) => {
                 if (error) {reject(error); return}
